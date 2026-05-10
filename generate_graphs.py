@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Data preparation
+
 data = {
     'Season': [1, 2, 3, 4, 5, 6, 7, 8],
     'Viewers_Millions': [13.34, 17.35, 19.95, 17.64, 13.62, 12.76, 10.32, 8.69]
@@ -10,13 +10,13 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Calculate season-to-season changes
+
 df['Change'] = df['Viewers_Millions'].diff()
 
-# Set up the plot style
+
 plt.style.use('seaborn-v0_8-whitegrid')
 
-# 1. Graph of viewership over time
+
 plt.figure(figsize=(10, 6))
 plt.plot(df['Season'], df['Viewers_Millions'], marker='o', linestyle='-', color='b', linewidth=2, markersize=8)
 plt.title('House M.D. Average Viewership per Season', fontsize=16)
@@ -30,7 +30,7 @@ plt.tight_layout()
 plt.savefig('/home/ubuntu/House-Report/viewership_over_time.png', dpi=300)
 plt.close()
 
-# 2. Graph of season-to-season changes
+
 plt.figure(figsize=(10, 6))
 colors = ['g' if x > 0 else 'r' for x in df['Change']]
 plt.bar(df['Season'][1:], df['Change'][1:], color=colors[1:], alpha=0.7)
